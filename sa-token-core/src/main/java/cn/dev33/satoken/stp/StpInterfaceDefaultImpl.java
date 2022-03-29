@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 对StpInterface接口默认的实现类
+ * 对 {@link StpInterface} 接口默认的实现类
  * <p>
  * 如果开发者没有实现StpInterface接口，则使用此默认实现
  * 
@@ -13,12 +13,12 @@ import java.util.List;
 public class StpInterfaceDefaultImpl implements StpInterface {
 
 	@Override
-	public List<String> getPermissionList(Object loginId, String loginKey) {
+	public List<String> getPermissionList(Object loginId, String loginType) {
 		return new ArrayList<String>();
 	}
 
 	@Override
-	public List<String> getRoleList(Object loginId, String loginKey) {
+	public List<String> getRoleList(Object loginId, String loginType) {
 		return new ArrayList<String>();
 	}
 

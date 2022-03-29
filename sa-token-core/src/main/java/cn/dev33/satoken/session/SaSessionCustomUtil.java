@@ -1,9 +1,22 @@
 package cn.dev33.satoken.session;
 
-import cn.dev33.satoken.SaTokenManager;
+import cn.dev33.satoken.SaManager;
+import cn.dev33.satoken.strategy.SaStrategy;
 
 /**
- * 自定义Session工具类
+ * 自定义 Session 工具类 
+ * 
+ * <p>样例：
+ * <pre>
+ * 		// 在一处代码写入数据 
+ * 		SaSession session = SaSessionCustomUtil.getSessionById("role-" + 1001);
+ * 		session.set("count", 1);
+ * 	
+ * 		// 在另一处代码获取数据 
+ * 		SaSession session = SaSessionCustomUtil.getSessionById("role-" + 1001);
+ * 		int count = session.getInt("count");
+ * 		System.out.println("count=" + count);
+ * </pre>
  * 
  * @author kong
  *
@@ -11,28 +24,28 @@ import cn.dev33.satoken.SaTokenManager;
 public class SaSessionCustomUtil {
 
 	/**
-	 * 添加上指定前缀，防止恶意伪造session
+	 * 添加上指定前缀，防止恶意伪造Session 
 	 */
 	public static String sessionKey = "custom";
 
 	/**
-	 * 组织一下自定义Session的id
+	 * 拼接Key: 自定义Session的Id 
 	 * 
 	 * @param sessionId 会话id
 	 * @return sessionId
 	 */
 	public static String splicingSessionKey(String sessionId) {
-		return SaTokenManager.getConfig().getTokenName() + ":" + sessionKey + ":session:" + sessionId;
+		return SaManager.getConfig().getTokenName() + ":" + sessionKey + ":session:" + sessionId;
 	}
 
 	/**
-	 * 验证指定key的Session是否存在
+	 * 指定key的Session是否存在
 	 * 
-	 * @param sessionId session的id
+	 * @param sessionId Session的id
 	 * @return 是否存在
 	 */
 	public static boolean isExists(String sessionId) {
-		return SaTokenManager.getSaTokenDao().getSession(splicingSessionKey(sessionId)) != null;
+		return SaManager.getSaTokenDao().getSession(splicingSessionKey(sessionId)) != null;
 	}
 
 	/**
@@ -43,10 +56,10 @@ public class SaSessionCustomUtil {
 	 * @return SaSession
 	 */
 	public static SaSession getSessionById(String sessionId, boolean isCreate) {
-		SaSession session = SaTokenManager.getSaTokenDao().getSession(splicingSessionKey(sessionId));
+		SaSession session = SaManager.getSaTokenDao().getSession(splicingSessionKey(sessionId));
 		if (session == null && isCreate) {
-			session = SaTokenManager.getSaTokenAction().createSession(sessionId);
-			SaTokenManager.getSaTokenDao().setSession(session, SaTokenManager.getConfig().getTimeout());
+			session = SaStrategy.me.createSession.apply(splicingSessionKey(sessionId));
+			SaManager.getSaTokenDao().setSession(session, SaManager.getConfig().getTimeout());		
 		}
 		return session;
 	}
@@ -62,12 +75,12 @@ public class SaSessionCustomUtil {
 	}
 
 	/**
-	 * 删除指定key的session
+	 * 删除指定key的Session 
 	 * 
 	 * @param sessionId 指定key
 	 */
 	public static void deleteSessionById(String sessionId) {
-		SaTokenManager.getSaTokenDao().deleteSession(splicingSessionKey(sessionId));
+		SaManager.getSaTokenDao().deleteSession(splicingSessionKey(sessionId));
 	}
 
 }

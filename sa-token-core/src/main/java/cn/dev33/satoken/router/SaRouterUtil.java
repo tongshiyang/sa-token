@@ -3,15 +3,19 @@ package cn.dev33.satoken.router;
 import java.util.Arrays;
 import java.util.List;
 
-import cn.dev33.satoken.SaTokenManager;
+import cn.dev33.satoken.SaManager;
+import cn.dev33.satoken.context.SaHolder;
+import cn.dev33.satoken.exception.StopMatchException;
 import cn.dev33.satoken.fun.IsRunFunction;
 import cn.dev33.satoken.fun.SaFunction;
 
 /**
+ * <h1> 本类设计已过时，未来版本可能移除此类，请及时更换为 SaRouter ，使用方式保持不变 </h1>
  * 对路由匹配符相关操作的封装工具类 
  * @author kong
  *
  */
+@Deprecated
 public class SaRouterUtil {
 
 	// -------------------- 路由匹配相关 -------------------- 
@@ -23,7 +27,7 @@ public class SaRouterUtil {
 	 * @return 是否匹配成功 
 	 */
 	public static boolean isMatch(String pattern, String path) {
-		return SaTokenManager.getSaTokenContext().matchPath(pattern, path);
+		return SaManager.getSaTokenContextOrSecond().matchPath(pattern, path);
 	}
 
 	/**
@@ -47,7 +51,7 @@ public class SaRouterUtil {
 	 * @return 是否匹配成功 
 	 */
 	public static boolean isMatchCurrURI(String pattern) {
-		return isMatch(pattern, SaTokenManager.getSaTokenContext().getRequest().getRequestURI());
+		return isMatch(pattern, SaHolder.getRequest().getRequestPath());
 	}
 
 	/**
@@ -56,7 +60,7 @@ public class SaRouterUtil {
 	 * @return 是否匹配成功 
 	 */
 	public static boolean isMatchCurrURI(List<String> patterns) {
-		return isMatch(patterns, SaTokenManager.getSaTokenContext().getRequest().getRequestURI());
+		return isMatch(patterns, SaHolder.getRequest().getRequestPath());
 	}
 	
 
@@ -119,10 +123,19 @@ public class SaRouterUtil {
 	 * @return 匹配结果包装对象 
 	 */
 	public static IsRunFunction match(String... patterns) {
-		boolean matchResult = isMatch(Arrays.asList(patterns), SaTokenManager.getSaTokenContext().getRequest().getRequestURI());
+		boolean matchResult = isMatch(Arrays.asList(patterns), SaHolder.getRequest().getRequestPath());
 		return new IsRunFunction(matchResult);
 	}
+
 	
+	// -------------------- 其它操作 -------------------- 
+	
+	/**
+	 * 停止匹配，跳出函数 (在多个匹配链中一次性跳出Auth函数) 
+	 */
+	public static void stop() {
+		throw new StopMatchException();
+	}
 	
 	
 	

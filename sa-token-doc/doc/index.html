@@ -2,68 +2,139 @@
 <html lang="zh">
 	<head>
 		<meta charset="UTF-8">
-		<title>sa-token</title>
+		<title>Sa-Token</title>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-		<meta name="description" content="sa-token是一个java权限认证框架，功能全面，上手简单，登录验证、权限验证、Session会话、踢人下线、账号封禁、集成Redis、前后台分离、分布式会话、微服务网关鉴权、单点登录、记住我模式、模拟他人账号、临时身份切换、多账号体系、注解式鉴权、路由拦截式鉴权、花式token、自动续签、同端互斥登录、会话治理、密码加密、jwt集成、Spring集成、WebFlux集成...，有了sa-token，你所有的权限认证问题，都不再是问题">
+		<meta name="description" content="Sa-Token是一个java权限认证框架，功能全面，上手简单，登录认证、权限认证、Session会话、踢人下线、账号封禁、集成Redis、前后台分离、分布式会话、微服务网关鉴权、单点登录、OAuth2.0、临时Token验证、记住我模式、模拟他人账号、临时身份切换、多账号体系、注解式鉴权、路由拦截式鉴权、花式token、自动续签、同端互斥登录、会话治理、密码加密、jwt集成、Spring集成、WebFlux集成...，有了sa-token，你所有的权限认证问题，都不再是问题">
 		<meta name="keywords" content="sa-token,sa-token框架,sa-token文档,java权限认证">
 		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 		<link rel="shortcut icon" type="image/x-icon" href="logo.png">
 		<link rel="stylesheet" href="./lib/index.css">
 		<link rel="stylesheet" href="https://unpkg.zhimg.com/docsify@4.11.3/lib/themes/vue.css">
+		<script type="text/javascript" src="https://cdn.wwads.cn/js/makemoney.js" async></script>
 	</head>
 	<body>
-		<a href="/">
+		<div class="doc-header">
+			<div class="nav-left">
+				<a href="index.html">
+					<div class="logo-box">
+						<img src="logo.png" title="logo" />
+						<h1 class="logo-text">Sa-Token</h1>
+						<sub>v1.29.1.trial</sub>
+					</div>
+				</a>
+			</div>
+			<nav class="nav-right">
+				<div class="sear-box p-none" tabindex="-1" >
+					<!-- 加载中…… -->
+				</div>
+				<select class="p-none" onchange="location.href=this.value">
+					<option value="http://sa-token.dev33.cn/doc/index.html">最新版</option>
+					<option value="http://sa-token.dev33.cn/v/v1.28.0/doc/index.html">v1.28.0</option>
+					<option value="http://sa-token.dev33.cn/v/v1.27.0/doc/index.html">v1.27.0</option>
+					<option value="http://sa-token.dev33.cn/v/v1.26.0/doc/index.html">v1.26.0</option>
+					<option value="http://sa-token.dev33.cn/v/v1.25.0/doc/index.html">v1.25.0</option>
+					<option value="http://sa-token.dev33.cn/v/v1.24.0/doc/index.html">v1.24.0</option>
+					<option value="http://sa-token.dev33.cn/v/v1.23.0/doc/index.html">v1.23.0</option>
+					<option value="http://sa-token.dev33.cn/v/v1.22.0/doc/index.html">v1.22.0</option>
+					<option value="http://sa-token.dev33.cn/v/v1.21.0/doc/index.html">v1.21.0</option>
+					<option value="http://sa-token.dev33.cn/v/v1.20.0/doc/index.html">v1.20.0</option>
+					<option value="http://sa-token.dev33.cn/v/v1.19.0/doc/index.html">v1.19.0</option>
+					<option value="http://sa-token.dev33.cn/v/v1.18.0/doc/index.html">v1.18.0</option>
+					<option value="http://sa-token.dev33.cn/v/v1.17.0/doc/index.html">v1.17.0</option>
+					<option value="http://sa-token.dev33.cn/v/v1.16.0/doc/index.html">v1.16.0</option>
+					<option value="http://sa-token.dev33.cn/v/v1.15.0/doc/index.html">v1.15.0</option>
+					<option value="http://sa-token.dev33.cn/v/v1.14.0/doc/index.html">v1.14.0</option>
+					<option value="http://sa-token.dev33.cn/v/v1.13.0/doc/index.html">v1.13.0</option>
+					<option value="http://sa-token.dev33.cn/v/v1.12.1/doc/index.html">v1.12.1</option>
+					<option value="http://sa-token.dev33.cn/v/v1.12.0/doc/index.html">v1.12.0</option>
+					<option value="http://sa-token.dev33.cn/v/v1.11.0/doc/index.html">v1.11.0</option>
+					<option value="http://sa-token.dev33.cn/v/v1.10.0/doc/index.html">v1.10.0</option>
+					<option value="http://sa-token.dev33.cn/v/v1.9.0/doc/index.html">v1.9.0</option>
+					<option value="http://sa-token.dev33.cn/v/v1.8.0/doc/index.html">v1.8.0</option>
+					<option value="http://sa-token.dev33.cn/v/v1.7.0/doc/index.html">v1.7.0</option>
+					<option value="http://sa-token.dev33.cn/v/v1.6.0/doc/index.html">v1.6.0</option>
+					<option value="http://sa-token.dev33.cn/v/v1.5.1/doc/index.html">v1.5.1</option>
+					<option value="http://sa-token.dev33.cn/v/v1.4.0/doc/index.html">v1.4.0</option>
+					<option value="http://sa-token.dev33.cn/v/v1.3.0/doc/index.html">v1.3.0</option>
+					<option value="http://sa-token.dev33.cn/v/v1.2.0/doc/index.html">v1.2.0</option>
+					<option value="http://sa-token.dev33.cn/v/v1.1.0/doc/index.html">v1.1.0</option>
+					<option value="http://sa-token.dev33.cn/v/v1.0.0/doc/index.html">v1.0.0</option>
+				</select>
+				<a class="wzi" href="../index.html">首页</a>
+				<a class="wzi" href="index.html">文档</a>
+				<a class="p-none wzi" href="#/more/link">生态</a>
+				<a class="p-none wzi" href="#/more/sa-token-donate">赞助</a>
+				<a class="p-none wzi" href="#/sso/sso-pro">🔥 SSO商业版</a>
+				<div class="zk-box">
+					<a class="wzi" href="javascript:;">
+						<span>相关资源 </span>
+						<span class="zk-icon"></span>
+					</a>
+					<div class="zk-context">
+						<div>
+							<!-- <a href="#/more/sa-token-donate">❤️ &nbsp;赞助</a> -->
+							<a href="#/more/update-log">更新日志</a>
+							<a href="#/more/common-questions">常见报错</a>
+							<a href="#/more/tj-gzh">推荐公众号</a>
+							<a href="#/fun/sa-token-test">在线考试 ++</a>
+							<div class="zk-fengexian"></div>
+							<a href="http://sa-app.dev33.cn/wall.html?name=sa-token" target="_blank">需求墙</a>
+							<a href="https://wj.qq.com/s2/8475114/2f6a/" target="_blank">问卷调查</a>
+						</div>
+					</div>
+				</div>
+			</nav>
+		</div>
+		<!-- <a href="/">
 			<div class="logo-box">
 				<img src="logo.png" title="logo" />
-				<h1 class="logo-text">sa-token</h1>
+				<h1 class="logo-text">Sa-Token</h1>
 			</div>
-		</a>
-		<nav>
-			<select onchange="location.href=this.value">
-				<option value="http://sa-token.dev33.cn/doc/index.html">最新版</option>
-				<option value="http://sa-token.dev33.cn/v/v1.15.0/doc/index.html">v1.15.0</option>
-				<option value="http://sa-token.dev33.cn/v/v1.14.0/doc/index.html">v1.14.0</option>
-				<option value="http://sa-token.dev33.cn/v/v1.13.0/doc/index.html">v1.13.0</option>
-				<option value="http://sa-token.dev33.cn/v/v1.12.1/doc/index.html">v1.12.1</option>
-				<option value="http://sa-token.dev33.cn/v/v1.12.0/doc/index.html">v1.12.0</option>
-				<option value="http://sa-token.dev33.cn/v/v1.11.0/doc/index.html">v1.11.0</option>
-				<option value="http://sa-token.dev33.cn/v/v1.10.0/doc/index.html">v1.10.0</option>
-				<option value="http://sa-token.dev33.cn/v/v1.9.0/doc/index.html">v1.9.0</option>
-				<option value="http://sa-token.dev33.cn/v/v1.8.0/doc/index.html">v1.8.0</option>
-				<option value="http://sa-token.dev33.cn/v/v1.7.0/doc/index.html">v1.7.0</option>
-				<option value="http://sa-token.dev33.cn/v/v1.6.0/doc/index.html">v1.6.0</option>
-				<option value="http://sa-token.dev33.cn/v/v1.5.1/doc/index.html">v1.5.1</option>
-				<option value="http://sa-token.dev33.cn/v/v1.4.0/doc/index.html">v1.4.0</option>
-			</select>
-			<a href="../index.html">首页</a>
-			<!-- <a href="index.html">文档</a> -->
-			<a href="http://sa-app.dev33.cn/wall.html?name=sa-token" target="_blank">需求墙</a>
-			<a href="#/more/tj-gzh">推荐公众号</a>
-			<a href="#/more/update-log">更新日志</a>
-		</nav>
+		</a> -->
+		
 		<div class="main-box">
 			<div id="app">加载中...</div>
 		</div>
+		<div style="position: fixed; right: 0; bottom: 0; z-index: 10000; border: 0px #aaa solid;">
+			<div class="wwads-cn wwads-vertical" data-id="88" style="max-width:150px"></div>
+		</div>
+		
+		<!-- UI逐渐显现 -->
+		<style type="text/css">
+			body{opacity: 0.01; transition: opacity 0.5s; background-color: #FFF;}
+		</style>
+		<script type="text/javascript">
+			setTimeout(function() {
+				document.body.style.opacity = 1;
+			}, 1);
+		</script>
+		
+		<!--  -->
+		<script src="./lib/docsify-plugin.js"></script>
 		<script>
+			var saTokenTopVersion = '1.29.1.trial';	// Sa-Token最新版本 
 			var name = '<img style="width: 60px; height: 60px; vertical-align: middle;" src="logo.png" alt="logo" /> ';
-			name += '<b style="font-size: 28px; vertical-align: middle;">sa-token</b> <sub>v1.16.0</sub>'
+			name += '<b style="font-size: 28px; vertical-align: middle;">Sa-Token</b> <sub>v' + saTokenTopVersion + '</sub>';
 			window.$docsify = {
-				name: name, // 名字 
+				// name: name, // 名字 
 				repo: 'https://github.com/dromara/sa-token', // github地址 
 				// themeColor: '#06A3D7', // 主题颜色  
 				basePath: location.pathname.substr(0, location.pathname.lastIndexOf('/') + 1), // 自动计算项目名字 
 				// basePath: '/sa-token-doc/',		// 设置文件加载的父路径, 这在一些带项目名部署的文件中非常有效
 				auto2top: true, // 是否在切换页面后回到顶部 
 				// coverpage: true, // 开启封面 
-				subMaxLevel: 3, // 标题解析层级, 写几就在目录树中解析到几级标题 ,一般写2吧也就 
+				subMaxLevel: 4, // 标题解析层级, 写几就在目录树中解析到几级标题 ,一般写2吧也就 
 				loadSidebar: true, // 加载自定义侧边栏 , 目录定制在: _sidebar.md 文件 (需要创建 .nojekyll 的空文件，阻止 GitHub Pages 忽略命名是下划线开头的文件)
 				copyCode: { // 复制插件 
 					buttonText: '复制到剪贴板',
 					errorText: '错误',
 					successText: '复制成功'
 				},
+				topMargin: 90, // 锚点距离顶部的距离 
+				// sidebarDisplayLevel : 1 ,  // 设置侧边栏显示级别
 				// search: 'auto', // 搜索功能 
 				alias: {
+					// '/sso/_sidebar.md': '/sso/_sidebar.md',
 					'/.*/_sidebar.md': '/_sidebar.md'
 				},
 				// tab选项卡
@@ -74,45 +145,25 @@
 					tabComments: true,      // 用注释来标注选项卡标题，例如：<!-- tab:SpringBoot  -->
 					tabHeadings: true       // 用标题+粗体来定制选项卡
 				},
-				plugins: [ // 自定义插件 
-					function(hook, vm) {
-						// 解析之后执行 
-						hook.afterEach(function(html) {
-							var url = 'https://gitee.com/dromara/sa-token/tree/dev/sa-token-doc/doc/' + vm.route.file;
-							var url2 = 'https://github.com/dromara/sa-token/tree/dev/sa-token-doc/doc/' + vm.route.file;
-							var footer = [
-								'<br/><br/><br/><br/><br/><br/><br/><hr/>',
-								'<footer>',
-								'<span>发现错误？想参与编辑？ 在 <a href="' + url + '" target="_blank">Gitee</a> 或 <a href="' + url2 +
-								'" target="_blank">GitHub</a> 上编辑此页！</span>',
-								'</footer>'
-							].join('');
-							return html + footer;
-						});
-						// 每次路由切换时数据全部加载完成后调用，没有参数。
-						hook.doneEach(function() {
-							$('pre code').each(function(){
-								var lines = $(this).text().split('\n').length;
-								var $numbering = $('<ul/>').addClass('code-line-box');
-								$(this)
-									.addClass('has-numbering')
-									.parent()
-									.append($numbering);
-								for(i=1;i<=lines;i++){
-									$numbering.append($('<li/>').text(i));
-								}
-							});
-						});
-					}
-				],
+				// 自定义插件 
+				plugins: [myDocsifyPlugin],
 			}
 		</script>
 		<script src="https://unpkg.zhimg.com/docsify@4.9.4/lib/docsify.min.js"></script>
 		<script src="https://unpkg.zhimg.com/docsify-copy-code@2.1.0/dist/docsify-copy-code.min.js"></script>
-		<script src="https://unpkg.zhimg.com/prismjs@1.19.0/components/prism-java.min.js"></script>
+		<script src="https://unpkg.zhimg.com/prismjs@1.20.0/components/prism-java.min.js"></script>
+		<!-- 搜索框 -->
 		<script src="https://cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"></script>
+		<!-- 多 tab 切换 -->
 		<script src="https://unpkg.zhimg.com/docsify-tabs@1.4.4"></script>
+		<!-- img点击放大 -->
+		<script src="https://cdn.jsdelivr.net/npm/docsify/lib/plugins/zoom-image.min.js"></script>
 		
+		<!-- sidebar折叠 -->
+		<!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify-sidebar-collapse/dist/sidebar.min.css" />
+		<script src="//cdn.jsdelivr.net/npm/docsify-sidebar-collapse/dist/docsify-sidebar-collapse.min.js"></script> -->
+
+		<!-- jqeury -->
 		<script src="https://unpkg.zhimg.com/jquery@3.4.1/dist/jquery.min.js"></script>
 
 		<!-- 搜索引擎自动提交 -->
@@ -144,33 +195,6 @@
 				s.parentNode.insertBefore(hm, s);
 			})();
 		</script>
-
-		<!-- Gitalk评论 -->
-		<link rel="stylesheet" href="https://unpkg.zhimg.com/gitalk@1.7.0/dist/gitalk.css">
-		<script src="https://unpkg.zhimg.com/docsify@4.11.6/lib/plugins/gitalk.min.js"></script>
-		<script src="https://unpkg.zhimg.com/gitalk@1.7.0/dist/gitalk.min.js"></script>
-		<script>
-			function f5Gitalk() {
-				var id = location.hash.replace('#', '');
-				if(id.indexOf('?') > -1) {
-					id = id.substr(0, id.indexOf('?'));
-				}
-				window.gitalk = new Gitalk({
-					id: id,
-					clientID: '19939399448841f818a1',
-					clientSecret: 'af67e0cc14a0f36e171895771c330471cfe36c23',
-					repo: 'sa-token',		// 仓库名称 
-					owner: 'dromara',
-					admin: ['click33'],	// 管理员列表 
-					// facebook-like distraction free mode
-					distractionFreeMode: false
-				})
-			}
-			f5Gitalk();
-			window.onhashchange = function() {
-				f5Gitalk();
-			}
-		</script>
-
+		
 	</body>
 </html>

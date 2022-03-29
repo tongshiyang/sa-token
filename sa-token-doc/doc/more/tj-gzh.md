@@ -8,6 +8,111 @@
 <table class="gzh-table" style="text-align: center;">
     <tr>
         <td>
+			<img src="https://mp.weixin.qq.com/mp/qrcode?scene=10000005&size=102&__biz=MzU2MTI4MjI0MQ==&mid=2247508620&idx=1&sn=500448fce310a6012aa58616c304dec2&send_time="/>
+			<b>Java笔记虾</b>
+			<span>专注于Java技术栈，推送 Spring全家桶，Dubbo等相关技术知识</span>
+		</td>
+        <td>
+			<img src="https://mp.weixin.qq.com/mp/qrcode?scene=10000005&size=102&__biz=MzAxODcyNjEzNQ==&mid=2247541818&idx=2&sn=2b0e7190ed40fa07196de26be51bb432&send_time="/>
+			<b>程序猿DD</b>
+			<span>一线技术工作者的学习、生活与见闻</span>
+		</td>
+        <td>
+			<img src="https://mp.weixin.qq.com/mp/qrcode?scene=10000005&size=102&__biz=MzU5Mjc5NTIzMA==&mid=2247485007&idx=1&sn=d3bc0cc74a4efbc88b52cc5812c6573a&send_time="/>
+			<b>TJ君</b>
+			<span>一个励志推荐10000款开源项目与免费工具的程序猿</span>
+		</td>
+        <td>-</td>
+        <td>-</td>
+    </tr>
+    <tr>
+        <td>
+			<img src="https://mp.weixin.qq.com/mp/qrcode?scene=10000005&size=102&__biz=Mzg2OTA0Njk0OA==&mid=2247511204&idx=2&sn=e1c689f459474fcc1b8ee2ca20a52d3a&send_time="/>
+			<b>JavaGuide</b>
+			<span>专注Java后端学习和大厂面试的公众号！</span>
+		</td>
+        <td>
+			<img src="https://mp.weixin.qq.com/mp/qrcode?scene=10000005&size=102&__biz=MzI3NzE0NjcwMg==&mid=2650166553&idx=3&sn=c8457e76c3fea17235fb7370cd2279d8&send_time="/>
+			<b>Hollis</b>
+			<span>《Java工程师成神之路》系列作者</span>
+		</td>
+        <td>
+			<img src="https://mp.weixin.qq.com/mp/qrcode?scene=10000005&size=102&__biz=MzU1Nzg4NjgyMw==&mid=2247493156&idx=1&sn=571db231d274a90ae9a47ac9c4f0a034&send_time="/>
+			<b>macrozheng</b>
+			<span>专注Java技术分享，作者Github开源项目mall（40K+Star）</span>
+		</td>
+        <td>
+			<img src="https://mp.weixin.qq.com/mp/qrcode?scene=10000005&size=102&__biz=MzU2OTMyMTAxNA==&mid=2247496684&idx=2&sn=be1520743589ca43c129fde828af16ef&send_time="/>
+			<b>终码一生</b>
+			<span>分享Java开发技术（JVM，多线程，高并发，性能调优）</span>
+		</td>
+        <td>
+			<img src="https://mp.weixin.qq.com/mp/qrcode?scene=10000005&size=102&__biz=MzU4ODI1MjA3NQ==&mid=2247502759&idx=2&sn=87ef078b86f5a0015d97807e76691b09&send_time="/>
+			<b>CodeSheep</b>
+			<span>一只爱技术的程序羊，想把分享变成一种习惯！</span>
+		</td>
+    </tr>
+    <tr>
+        <td>
+			<img src="https://mp.weixin.qq.com/mp/qrcode?scene=10000004&size=102&__biz=MzI4Njk5OTg1MA==&mid=2247489188&idx=1&sn=0098f458660d194817d4fc40bca55e4d&send_time="/>
+			<b>Java开发宝典</b>
+			<span>分享Java基础、Java框架、数据库、微服务、中间件、分布式、架构等技术干货</span>
+		</td>
+        <td>
+			<img src="https://mp.weixin.qq.com/mp/qrcode?scene=10000005&size=102&__biz=MzIwODkzOTc1MQ==&mid=2247489717&idx=1&sn=1c295f070123c84ee3791ac4d4898ae9&send_time="/>
+			<b>MarkerHub</b>
+			<span>专注于梳理java知识，解析开源项目。 </span>
+		</td>
+        <td>
+			<img src="https://mp.weixin.qq.com/mp/qrcode?scene=10000004&size=102&__biz=MzI3MDE0NzYwNA==&mid=2651444525&idx=3&sn=e266f94ada851a5ba6a61c1d71e9a62f&send_time="/>
+			<b>架构师必备</b>
+			<span>分享干货文章，做一个有逼格的架构师社区！ </span>
+		</td>
+        <td>
+			<img src="https://mp.weixin.qq.com/mp/qrcode?scene=10000005&size=102&__biz=Mzk0MjE5MTk5Mw==&mid=2247485576&idx=1&sn=d955d60ab193d895fbd15c37bedebcb8&send_time="/>
+			<b>Github导航站</b>
+			<span>分享好玩有趣、新奇、实用的开源项目 </span>
+		</td>
+        <td>
+			<img src="https://mp.weixin.qq.com/mp/qrcode?scene=10000005&size=102&__biz=MzI1MTA3Mzk4Mg==&mid=2651026326&idx=1&sn=3244e18a9a799cd8e0ec375c6c730670&send_time="/>
+			<b>Java爱好者</b>
+			<span>分享Java开发编程资源和Java技术文章 </span>
+		</td>
+    </tr>
+    <tr>
+        <td>
+			<img src="https://mp.weixin.qq.com/mp/qrcode?scene=10000005&size=102&__biz=MzIxODQxMjc0MA==&mid=2247511029&idx=1&sn=42fbb1b8180dc2c995429dabc6f97500&send_time="/>
+			<b>IT大咖说</b>
+			<span>大咖干货，不再错过。 </span>
+		</td>
+        <td>
+			<img src="https://mp.weixin.qq.com/mp/qrcode?scene=10000005&size=102&__biz=MzIxNjA5MTM2MA==&mid=2652444329&idx=1&sn=2a040e87f49a977a116c90e1107a9fdc&send_time="/>
+			<b>Java编程</b>
+			<span>专注Java技术分享，Java基础知识/数据结构/算法</span>
+		</td>
+        <td>
+			<img src="https://mp.weixin.qq.com/mp/qrcode?scene=10000005&size=102&__biz=MzA4MDMyODg4OQ==&mid=2649482871&idx=2&sn=b376585faaf814d9072af539efda68fe&send_time="/>
+			<b>大侠学JAVA</b>
+			<span>道阻且长，行则将至，专注分享JAVA领域的干货</span>
+		</td>
+        <td>
+			<img src="https://mp.weixin.qq.com/mp/qrcode?scene=10000005&size=102&__biz=Mzg2MDIxNjAzNg==&mid=2247485810&idx=1&sn=afd46d5924afbc1030a87b5d56265fdf&send_time="/>
+			<b>Java大厂面试官</b>
+			<span>一名一直奋斗在一线的程序员, 记录工作用遇到的问题和解决方案</span>
+		</td>
+        <td>
+			<img src="https://mp.weixin.qq.com/mp/qrcode?scene=10000005&size=102&__biz=MzI2ODQwMTI0MA==&mid=2247486194&idx=2&sn=3fef462f77bdf0354a223e2e6d9d9136&send_time="/>
+			<b>程序员大神</b>
+			<span>有一个在程序员圈混了10年的老程序员, 分享程序员相关的精选内容教程</span>
+		</td>
+    </tr>
+    <tr>
+        <td>
+			<img src="https://mp.weixin.qq.com/mp/qrcode?scene=10000005&size=102&__biz=MzUyMDk4OTU5OA==&mid=2247499610&idx=6&sn=bc12403d060cba70be5739b808057d14&send_time="/>
+			<b>码农学习联盟</b>
+			<span>码农学习联盟，程序员码农学习第一站！Java、Python、大数据、机器学习、人工智能</span>
+		</td>
+        <td>
 			<img src="https://mp.weixin.qq.com/mp/qrcode?scene=10000005&size=102&__biz=MjM5NzA1MTcyMA==&mid=2651175957&idx=3&sn=93343b003a8a3c2c600b909499cb554a&send_time="/>
 			<b>程序猿</b>
 			<span>传播编程经验，挖掘程序员优秀的学习资源。</span>
@@ -27,9 +132,8 @@
 			<b>开源最前线</b>
 			<span>推荐热门开源软件，介绍新开源项目，报导开源资讯！</span>
 		</td>
-		<td></td>
     </tr>
-    <tr>
+    <!-- <tr>
         <td>
 			<img src="https://mp.weixin.qq.com/mp/qrcode?scene=10000004&size=102&__biz=MzUzNTY2NjAzMg==&mid=2247484321&idx=1&sn=52e7e5e0dc03437e94908b6a67985500&send_time="/>
 			<b>Dromara开源组织</b>
@@ -112,10 +216,10 @@
 			<b>HelloGitHub</b>
 			<span>分享 GitHub 上有趣、入门级的开源项目。</span>
 		</td>
-	</tr>
+	</tr> -->
 </table>
 
 <br>
 
-感谢以上公众号对 sa-token 项目的推荐，如果您也是java公众号运营者，欢迎 [相互推荐](/more/tj-gzh-hz)
+感谢以上公众号对 Sa-Token 项目的推荐，如果您也是java公众号运营者，欢迎 [相互推荐](/more/tj-gzh-hz)
 

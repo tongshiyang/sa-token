@@ -1,7 +1,7 @@
 package cn.dev33.satoken.stp;
 
 /**
- * token信息Model: 用来描述一个token的常用参数
+ * Token信息Model: 用来描述一个Token的常用参数
  * 
  * @author kong
  *
@@ -20,8 +20,8 @@ public class SaTokenInfo {
 	/** 此token对应的LoginId，未登录时为null */
 	public Object loginId;
 
-	/** LoginKey账号体系标识 */
-	public String loginKey;
+	/** 账号类型 */
+	public String loginType;
 
 	/** token剩余有效期 (单位: 秒) */
 	public long tokenTimeout;
@@ -37,6 +37,11 @@ public class SaTokenInfo {
 
 	/** 登录设备标识 */
 	public String loginDevice;
+
+	/** 自定义数据 */
+	public String tag;
+	
+
 
 	/**
 	 * @return token名称 
@@ -95,17 +100,17 @@ public class SaTokenInfo {
 	}
 
 	/**
-	 * @return LoginKey账号体系标识 
+	 * @return 账号类型
 	 */
-	public String getLoginKey() {
-		return loginKey;
+	public String getLoginType() {
+		return loginType;
 	}
 
 	/**
-	 * @param loginKey LoginKey账号体系标识 
+	 * @param loginType 账号类型
 	 */
-	public void setLoginKey(String loginKey) {
-		this.loginKey = loginKey;
+	public void setLoginType(String loginType) {
+		this.loginType = loginType;
 	}
 
 	/**
@@ -179,14 +184,31 @@ public class SaTokenInfo {
 	}
 
 	/**
+	 * @return 自定义数据
+	 */
+	public String getTag() {
+		return tag;
+	}
+
+	/**
+	 * @param tag 自定义数据
+	 */
+	public void setTag(String tag) {
+		this.tag = tag;
+	}
+
+	/**
 	 * toString
 	 */
 	@Override
 	public String toString() {
 		return "SaTokenInfo [tokenName=" + tokenName + ", tokenValue=" + tokenValue + ", isLogin=" + isLogin
-				+ ", loginId=" + loginId + ", loginKey=" + loginKey + ", tokenTimeout=" + tokenTimeout
+				+ ", loginId=" + loginId + ", loginType=" + loginType + ", tokenTimeout=" + tokenTimeout
 				+ ", sessionTimeout=" + sessionTimeout + ", tokenSessionTimeout=" + tokenSessionTimeout
-				+ ", tokenActivityTimeout=" + tokenActivityTimeout + ", loginDevice=" + loginDevice + "]";
+				+ ", tokenActivityTimeout=" + tokenActivityTimeout + ", loginDevice=" + loginDevice + ", tag=" + tag
+				+ "]";
 	}
+	
+	
 
 }

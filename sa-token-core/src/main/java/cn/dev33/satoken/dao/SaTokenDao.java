@@ -5,113 +5,113 @@ import java.util.List;
 import cn.dev33.satoken.session.SaSession;
 
 /**
- * sa-token持久层的接口 
+ * Sa-Token持久层接口 
  * @author kong 
  */
 public interface SaTokenDao {
 
 	/** 常量，表示一个key永不过期 (在一个key被标注为永远不过期时返回此值) */ 
-	public static final Long NEVER_EXPIRE = -1L;
+	public static final long NEVER_EXPIRE = -1;
 	
 	/** 常量，表示系统中不存在这个缓存 (在对不存在的key获取剩余存活时间时返回此值) */ 
-	public static final Long NOT_VALUE_EXPIRE = -2L;
+	public static final long NOT_VALUE_EXPIRE = -2;
 
 	
-	// --------------------- token相关 ---------------------
+	// --------------------- 字符串读写 ---------------------
 	
 	/**
-	 * 根据key获取value，如果没有，则返回空 
+	 * 获取Value，如无返空 
 	 * @param key 键名称 
 	 * @return value
 	 */
 	public String get(String key);
 
 	/**
-	 * 写入指定key-value键值对，并设定过期时间 (单位: 秒)
+	 * 写入Value，并设定存活时间 (单位: 秒)
 	 * @param key 键名称 
 	 * @param value 值 
-	 * @param timeout 过期时间 (单位: 秒)
+	 * @param timeout 过期时间(值大于0时限时存储，值=-1时永久存储，值=0或小于-2时不存储)
 	 */
 	public void set(String key, String value, long timeout);
 
 	/**
-	 * 修改指定key-value键值对 (过期时间不变)
+	 * 更新Value (过期时间不变) 
 	 * @param key 键名称 
 	 * @param value 值 
 	 */
 	public void update(String key, String value);
 
 	/**
-	 * 删除一个指定的key 
+	 * 删除Value 
 	 * @param key 键名称 
 	 */
 	public void delete(String key);
 	
 	/**
-	 * 获取指定key的剩余存活时间 (单位: 秒)
+	 * 获取Value的剩余存活时间 (单位: 秒) 
 	 * @param key 指定key 
 	 * @return 这个key的剩余存活时间 
 	 */
 	public long getTimeout(String key);
 	
 	/**
-	 * 修改指定key的剩余存活时间 (单位: 秒)
+	 * 修改Value的剩余存活时间 (单位: 秒) 
 	 * @param key 指定key
 	 * @param timeout 过期时间 
 	 */
 	public void updateTimeout(String key, long timeout);
 
 	
-	// --------------------- Object相关 ---------------------
+	// --------------------- 对象读写 ---------------------
 
 	/**
-	 * 根据key获取Object，如果没有，则返回空 
+	 * 获取Object，如无返空 
 	 * @param key 键名称 
 	 * @return object
 	 */
 	public Object getObject(String key);
 
 	/**
-	 * 写入指定键值对，并设定过期时间 (单位: 秒)
+	 * 写入Object，并设定存活时间 (单位: 秒)
 	 * @param key 键名称 
 	 * @param object 值 
-	 * @param timeout 过期时间 (单位: 秒)
+	 * @param timeout 存活时间 (值大于0时限时存储，值=-1时永久存储，值=0或小于-2时不存储)
 	 */
 	public void setObject(String key, Object object, long timeout);
 
 	/**
-	 * 修改指定键值对 (过期时间不变)
+	 * 更新Object (过期时间不变) 
 	 * @param key 键名称 
 	 * @param object 值 
 	 */
 	public void updateObject(String key, Object object);
 
 	/**
-	 * 删除一个指定的Object 
+	 * 删除Object 
 	 * @param key 键名称 
 	 */
 	public void deleteObject(String key);
 	
 	/**
-	 * 获取指定key的剩余存活时间 (单位: 秒)
+	 * 获取Object的剩余存活时间 (单位: 秒)
 	 * @param key 指定key 
 	 * @return 这个key的剩余存活时间 
 	 */
 	public long getObjectTimeout(String key);
 	
 	/**
-	 * 修改指定key的剩余存活时间 (单位: 秒)
+	 * 修改Object的剩余存活时间 (单位: 秒)
 	 * @param key 指定key
 	 * @param timeout 过期时间 
 	 */
 	public void updateObjectTimeout(String key, long timeout);
 
 	
-	// --------------------- Session相关 ---------------------
+	// --------------------- Session读写 ---------------------
 
 	/**
-	 * 根据指定key的Session，如果没有，则返回空 
-	 * @param sessionId 键名称 
+	 * 获取Session，如无返空 
+	 * @param sessionId sessionId
 	 * @return SaSession
 	 */
 	public default SaSession getSession(String sessionId) {
@@ -119,8 +119,8 @@ public interface SaTokenDao {
 	}
 
 	/**
-	 * 将指定Session持久化 
-	 * @param session 要保存的session对象
+	 * 写入Session，并设定存活时间 (单位: 秒) 
+	 * @param session 要保存的Session对象
 	 * @param timeout 过期时间 (单位: 秒)
 	 */
 	public default void setSession(SaSession session, long timeout) {
@@ -128,7 +128,7 @@ public interface SaTokenDao {
 	}
 
 	/**
-	 * 更新指定session 
+	 * 更新Session
 	 * @param session 要更新的session对象
 	 */
 	public default void updateSession(SaSession session) {
@@ -136,7 +136,7 @@ public interface SaTokenDao {
 	}
 	
 	/**
-	 * 删除一个指定的session 
+	 * 删除Session
 	 * @param sessionId sessionId
 	 */
 	public default void deleteSession(String sessionId) {
@@ -144,17 +144,17 @@ public interface SaTokenDao {
 	}
 
 	/**
-	 * 获取指定SaSession的剩余存活时间 (单位: 秒) 
-	 * @param sessionId 指定SaSession 
-	 * @return 这个SaSession的剩余存活时间 (单位: 秒)
+	 * 获取Session剩余存活时间 (单位: 秒) 
+	 * @param sessionId 指定Session 
+	 * @return 这个Session的剩余存活时间 
 	 */
 	public default long getSessionTimeout(String sessionId) {
 		return getObjectTimeout(sessionId);
 	}
 	
 	/**
-	 * 修改指定SaSession的剩余存活时间 (单位: 秒) 
-	 * @param sessionId sessionId
+	 * 修改Session剩余存活时间 (单位: 秒) 
+	 * @param sessionId 指定Session 
 	 * @param timeout 过期时间 
 	 */
 	public default void updateSessionTimeout(String sessionId, long timeout) {

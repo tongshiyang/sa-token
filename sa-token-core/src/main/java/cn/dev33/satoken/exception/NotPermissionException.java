@@ -3,7 +3,7 @@ package cn.dev33.satoken.exception;
 import cn.dev33.satoken.stp.StpUtil;
 
 /**
- * 没有指定权限码，抛出的异常 
+ * 一个异常：代表会话未能通过权限认证 
  * 
  * @author kong
  *
@@ -13,7 +13,7 @@ public class NotPermissionException extends SaTokenException {
 	/**
 	 * 序列化版本号 
 	 */
-	private static final long serialVersionUID = 6806129545290130142L;
+	private static final long serialVersionUID = 6806129545290130141L;
 
 	/** 权限码 */
 	private String code;
@@ -26,27 +26,27 @@ public class NotPermissionException extends SaTokenException {
 	}
 
 	/**
-	 * loginKey
+	 * 账号类型
 	 */
-	private String loginKey;
+	private String loginType;
 
 	/**
-	 * 获得loginKey
+	 * 获得账号类型
 	 * 
-	 * @return loginKey
+	 * @return 账号类型
 	 */
-	public String getLoginKey() {
-		return loginKey;
+	public String getLoginType() {
+		return loginType;
 	}
 
 	public NotPermissionException(String code) {
-		this(code, StpUtil.stpLogic.loginKey);
+		this(code, StpUtil.stpLogic.loginType);
 	}
 
-	public NotPermissionException(String code, String loginKey) {
+	public NotPermissionException(String code, String loginType) {
 		super("无此权限：" + code);
 		this.code = code;
-		this.loginKey = loginKey;
+		this.loginType = loginType;
 	}
 
 }

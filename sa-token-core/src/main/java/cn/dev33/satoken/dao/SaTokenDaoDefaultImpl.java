@@ -6,11 +6,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-import cn.dev33.satoken.SaTokenManager;
-import cn.dev33.satoken.util.SaTokenInsideUtil;
+import cn.dev33.satoken.SaManager;
+import cn.dev33.satoken.util.SaFoxUtil;
 
 /**
- * sa-token持久层默认的实现类 , 基于内存Map 
+ * Sa-Token持久层接口 [默认实现类, 基于内存Map] 
  * @author kong
  *
  */
@@ -45,6 +45,9 @@ public class SaTokenDaoDefaultImpl implements SaTokenDao {
 
 	@Override
 	public void set(String key, String value, long timeout) {
+		if(timeout == 0 || timeout <= SaTokenDao.NOT_VALUE_EXPIRE)  {
+			return;
+		}
 		dataMap.put(key, value);
 		expireMap.put(key, (timeout == SaTokenDao.NEVER_EXPIRE) ? (SaTokenDao.NEVER_EXPIRE) : (System.currentTimeMillis() + timeout * 1000));
 	}
@@ -84,6 +87,9 @@ public class SaTokenDaoDefaultImpl implements SaTokenDao {
 
 	@Override
 	public void setObject(String key, Object object, long timeout) {
+		if(timeout == 0 || timeout <= SaTokenDao.NOT_VALUE_EXPIRE)  {
+			return;
+		}
 		dataMap.put(key, object);
 		expireMap.put(key, (timeout == SaTokenDao.NEVER_EXPIRE) ? (SaTokenDao.NEVER_EXPIRE) : (System.currentTimeMillis() + timeout * 1000));
 	}
@@ -93,7 +99,7 @@ public class SaTokenDaoDefaultImpl implements SaTokenDao {
 		if(getKeyTimeout(key) == SaTokenDao.NOT_VALUE_EXPIRE) {
 			return;
 		}
-		// 无动作 
+		dataMap.put(key, object);
 	}
 
 	@Override
@@ -170,7 +176,7 @@ public class SaTokenDaoDefaultImpl implements SaTokenDao {
 	/**
 	 * 是否继续执行数据清理的线程标记
 	 */
-	public boolean refreshFlag;
+	public volatile boolean refreshFlag;
 	
 
 	/**
@@ -189,7 +195,7 @@ public class SaTokenDaoDefaultImpl implements SaTokenDao {
 	public void initRefreshThread() {
 
 		// 如果配置了<=0的值，则不启动定时清理
-		if(SaTokenManager.getConfig().getDataRefreshPeriod() <= 0) {
+		if(SaManager.getConfig().getDataRefreshPeriod() <= 0) {
 			return;
 		}
 		// 启动定时刷新
@@ -208,7 +214,7 @@ public class SaTokenDaoDefaultImpl implements SaTokenDao {
 						e.printStackTrace();
 					}
 					// 休眠N秒 
-					int dataRefreshPeriod = SaTokenManager.getConfig().getDataRefreshPeriod();
+					int dataRefreshPeriod = SaManager.getConfig().getDataRefreshPeriod();
 					if(dataRefreshPeriod <= 0) {
 						dataRefreshPeriod = 1;
 					}
@@ -218,7 +224,7 @@ public class SaTokenDaoDefaultImpl implements SaTokenDao {
 				}
 			}
 		});
-		refreshThread.start();
+		this.refreshThread.start();
 	}
 	
 	/**
@@ -235,7 +241,7 @@ public class SaTokenDaoDefaultImpl implements SaTokenDao {
 	
 	@Override
 	public List<String> searchData(String prefix, String keyword, int start, int size) {
-		return SaTokenInsideUtil.searchList(expireMap.keySet(), prefix, keyword, start, size);
+		return SaFoxUtil.searchList(expireMap.keySet(), prefix, keyword, start, size);
 	}
 
 

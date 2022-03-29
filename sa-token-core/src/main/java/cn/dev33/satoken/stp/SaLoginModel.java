@@ -1,18 +1,20 @@
 package cn.dev33.satoken.stp;
 
-import cn.dev33.satoken.SaTokenManager;
+import java.util.LinkedHashMap;
+import java.util.Map;
+
+import cn.dev33.satoken.SaManager;
 import cn.dev33.satoken.config.SaTokenConfig;
 import cn.dev33.satoken.dao.SaTokenDao;
 import cn.dev33.satoken.util.SaTokenConsts;
 
 /**
- * 调用 `StpUtil.setLogin()` 时的 [配置参数 Model ]
+ * 调用 `StpUtil.login()` 时的 [配置参数 Model ]
  * @author kong
  *
  */
 public class SaLoginModel {
 
-	
 	/**
 	 * 此次登录的客户端设备标识 
 	 */
@@ -28,16 +30,26 @@ public class SaLoginModel {
 	 */
 	public Long timeout;
 
+	/**
+	 * 扩展信息（只在jwt模式下生效）
+	 */
+	public Map<String, Object> extraData;
+
+	/**
+	 * 预定Token（预定本次登录生成的Token值）
+	 */
+	public String token;
+	
 	
 	/**
-	 * @return device
+	 * @return 此次登录的客户端设备标识 
 	 */
 	public String getDevice() {
 		return device;
 	}
 
 	/**
-	 * @param device 要设置的 device
+	 * @param device 此次登录的客户端设备标识 
 	 * @return 对象自身
 	 */
 	public SaLoginModel setDevice(String device) {
@@ -46,14 +58,14 @@ public class SaLoginModel {
 	}
 
 	/**
-	 * @return isLastingCookie
+	 * @return 参考 是否为持久Cookie（临时Cookie在浏览器关闭时会自动删除，持久Cookie在重新打开后依然存在）
 	 */
 	public Boolean getIsLastingCookie() {
 		return isLastingCookie;
 	}
 
 	/**
-	 * @param isLastingCookie 要设置的 isLastingCookie
+	 * @param isLastingCookie 是否为持久Cookie（临时Cookie在浏览器关闭时会自动删除，持久Cookie在重新打开后依然存在）
 	 * @return 对象自身
 	 */
 	public SaLoginModel setIsLastingCookie(Boolean isLastingCookie) {
@@ -62,14 +74,14 @@ public class SaLoginModel {
 	}
 
 	/**
-	 * @return timeout
+	 * @return 指定此次登录token的有效期, 单位:秒 （如未指定，自动取全局配置的timeout值）
 	 */
 	public Long getTimeout() {
 		return timeout;
 	}
 
 	/**
-	 * @param timeout 要设置的 timeout
+	 * @param timeout 指定此次登录token的有效期, 单位:秒 （如未指定，自动取全局配置的timeout值）
 	 * @return 对象自身
 	 */
 	public SaLoginModel setTimeout(long timeout) {
@@ -77,9 +89,78 @@ public class SaLoginModel {
 		return this;
 	}
 
+	/**
+	 * @return 扩展信息（只在jwt模式下生效）
+	 */
+	public Map<String, Object> getExtraData() {
+		return extraData;
+	}
 
 	/**
-	 * @return cookie时长
+	 * @param extraData 扩展信息（只在jwt模式下生效）
+	 * @return 对象自身
+	 */
+	public SaLoginModel setExtraData(Map<String, Object> extraData) {
+		this.extraData = extraData;
+		return this;
+	}
+
+	/**
+	 * @return 预定Token（预定本次登录生成的Token值）
+	 */
+	public String getToken() {
+		return token;
+	}
+
+	/**
+	 * @param token 预定Token（预定本次登录生成的Token值）
+	 * @return 对象自身
+	 */
+	public SaLoginModel setToken(String token) {
+		this.token = token;
+		return this;
+	}
+
+	/*
+	 * toString 
+	 */
+	@Override
+	public String toString() {
+		return "SaLoginModel [device=" + device + ", isLastingCookie=" + isLastingCookie + ", timeout=" + timeout
+				+ ", extraData=" + extraData + ", token=" + token + "]";
+	}
+
+	// ------ 附加方法 
+	
+
+	/**
+	 * 写入扩展数据（只在jwt模式下生效） 
+	 * @param key 键
+	 * @param value 值 
+	 * @return 对象自身 
+	 */
+	public SaLoginModel setExtra(String key, Object value) {
+		if(this.extraData == null) {
+			this.extraData = new LinkedHashMap<>();
+		}
+		this.extraData.put(key, value);
+		return this;
+	}
+
+	/**
+	 * 获取扩展数据（只在jwt模式下生效） 
+	 * @param key 键
+	 * @return 扩展数据的值 
+	 */
+	public Object getExtra(String key) {
+		if(this.extraData == null) {
+			return null;
+		}
+		return this.extraData.get(key);
+	}
+
+	/**
+	 * @return Cookie时长
 	 */
 	public int getCookieTimeout() {
 		if(isLastingCookie == false) {
@@ -91,13 +172,22 @@ public class SaLoginModel {
 		return (int)(long)timeout;
 	}
 
+	/**
+	 * @return 获取device参数，如果为null，则返回默认值
+	 */
+	public String getDeviceOrDefault() {
+		if(device == null) {
+			return SaTokenConsts.DEFAULT_LOGIN_DEVICE;
+		}
+		return device;
+	}
 	
 	/**
 	 * 构建对象，初始化默认值 
 	 * @return 对象自身
 	 */
 	public SaLoginModel build() {
-		return build(SaTokenManager.getConfig());
+		return build(SaManager.getConfig());
 	}
 	
 	/**
@@ -106,9 +196,9 @@ public class SaLoginModel {
 	 * @return 对象自身
 	 */
 	public SaLoginModel build(SaTokenConfig config) {
-		if(device == null) {
-			device = SaTokenConsts.DEFAULT_LOGIN_DEVICE;
-		}
+//		if(device == null) {
+//			device = SaTokenConsts.DEFAULT_LOGIN_DEVICE;
+//		}
 		if(isLastingCookie == null) {
 			isLastingCookie = true;
 		}
@@ -117,7 +207,6 @@ public class SaLoginModel {
 		}
 		return this;
 	}
-	
 	
 	/**
 	 * 静态方法获取一个 SaLoginModel 对象
@@ -129,14 +218,11 @@ public class SaLoginModel {
 
 	
 	/**
-	 * toString
+	 * 更换为 getDeviceOrDefault() 
+	 * @return / 
 	 */
-	@Override
-	public String toString() {
-		return "SaLoginModel [device=" + device + ", isLastingCookie=" + isLastingCookie + ", timeout=" + timeout + "]";
+	@Deprecated
+	public String getDeviceOrDefalut() {
+		return getDeviceOrDefault();
 	}
-
-	
-	
-	
 }

@@ -3,11 +3,21 @@
 
 ### Session是什么？
 
-Session是会话中专业的数据缓存组件，通过`Session`我们可以很方便的缓存一些高频读写数据，提高程序性能<br>
-在`sa-token`中, `Session` 分为三种, 分别是：
-- `User-Session`: 指的是框架为每个`loginId`分配的`Session` 
-- `Token-Session`: 指的是框架为每个`token`分配的`Session` 
-- `自定义Session`: 指的是以一个`特定的值`作为SessionId，来分配的`Session` 
+Session是会话中专业的数据缓存组件，通过 Session 我们可以很方便的缓存一些高频读写数据，提高程序性能，例如：
+
+``` java
+// 在登录时缓存user对象 
+StpUtil.getSession().set("user", user);
+
+// 然后我们就可以在任意处使用这个user对象
+SysUser user = (SysUser) StpUtil.getSession().get("user");
+```
+
+在 Sa-Token 中，Session 分为三种，分别是：
+
+- `User-Session`: 指的是框架为每个 账号id 分配的 Session 
+- `Token-Session`: 指的是框架为每个 token 分配的 Session  
+- `Custom-Session`: 指的是以一个 特定的值 作为SessionId，来分配的 Session 
 
 > 有关User-Session与Token-Session的详细区别，请参考：[Session模型详解](/fun/session-model)
 
@@ -105,13 +115,13 @@ session.logout();
 
 ### 类型转换API
 由于Session存取值默认的类型都是Object，因此我们通常会写很多不必要类型转换代码 <br>
-为了简化操作，sa-token自`v1.15.0`封装了存取值API的类型转换，你可以非常方便的调用以下方法：
+为了简化操作，Sa-Token自`v1.15.0`封装了存取值API的类型转换，你可以非常方便的调用以下方法：
 ``` java
 // 写值 
 session.set("name", "zhang"); 
 
-// 写值(只有在此key原本无值的时候才会写入)
-session.set("name", "zhang");
+// 写值 (只有在此key原本无值的时候才会写入)
+session.setDefaultValue("name", "zhang");
 
 // 取值
 session.get("name");
@@ -158,4 +168,5 @@ public void reset(HttpSession session) {
 ```
 **要点：**
 1. `SaSession` 与 `HttpSession` 没有任何关系，在`HttpSession`上写入的值，在`SaSession`中无法取出
-2. `HttpSession`并未被框架接管，在使用sa-token时，请在任何情况下均使用`SaSession`，不要使用`HttpSession` 
+2. `HttpSession`并未被框架接管，在使用Sa-Token时，请在任何情况下均使用`SaSession`，不要使用`HttpSession` 
+

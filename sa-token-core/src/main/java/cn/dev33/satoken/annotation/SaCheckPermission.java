@@ -6,8 +6,8 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * 权限校验：标注在一个方法上，当前会话必须具有指定权限才能进入该方法 
- * <p> 可标注在类上，其效果等同于标注在此类的所有方法上 
+ * 权限认证：必须具有指定权限才能进入该方法 
+ * <p> 可标注在函数、类上（效果等同于标注在此类的所有方法上） 
  * @author kong
  *
  */
@@ -26,5 +26,28 @@ public @interface SaCheckPermission {
 	 * @return 验证模式
 	 */
 	SaMode mode() default SaMode.AND;
+
+    /**
+     * 多账号体系下所属的账号体系标识 
+     * @return see note 
+     */
+	String type() default "";
+
+	/**
+	 * 在权限认证不通过时的次要选择，两者只要其一认证成功即可通过校验  
+	 * 
+	 * <p> 
+	 * 	例1：@SaCheckPermission(value="user-add", orRole="admin")，
+	 * 	代表本次请求只要具有 user-add权限 或 admin角色 其一即可通过校验 
+	 * </p>
+	 * 
+	 * <p> 
+	 * 	例2： orRole = {"admin", "manager", "staff"}，具有三个角色其一即可 <br> 
+	 * 	例3： orRole = {"admin, manager, staff"}，必须三个角色同时具备 
+	 * </p>
+	 * 
+	 * @return /
+	 */
+	String[] orRole() default {};
 	
 }
